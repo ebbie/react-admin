@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Role } from '../../classes/role';
+import Deleter from '../components/Deleter';
 import Wrapper from '../Wrapper';
 /**
  * 
@@ -12,22 +13,18 @@ class Roles extends React.Component {
         roles: []
     }
 
-componentDidMount = async () =>  {
-    const response = await axios.get('roles');
-    
-    this.setState({
-        roles: response.data.data
-    });
-    console.log(response);
-}
-    delete = async (id: number) => {
-        if(window.confirm('Are you sure you want to delete this record?')) {
-            await axios.delete(`roles/${id}`);
-
+    componentDidMount = async () =>  {
+        const response = await axios.get('roles');
+        
+        this.setState({
+            roles: response.data.data
+        });
+        console.log(response);
+    }
+    handleDelete = async (id: number) => {
             this.setState({
-                users: this.state.roles.filter((r: Role )=> r.id !== id)
+                roles: this.state.roles.filter((r: Role )=> r.id !== id)
             });
-        }
     }
     render() {
         return <Wrapper>
@@ -55,12 +52,10 @@ componentDidMount = async () =>  {
                                         <td>{role.id}</td>
                                         <td>{role.name}</td>
                                         <td>
-                                        <div className="btn-group mr-2">
-                                                    <Link to={`/roles/${role.id}/edit`} className="btn btn-sm btn-outline-secondary">Edit</Link>
-                                                    <a href="#" className="btn btn-sm btn-outline-secondary" 
-                                                        onClick={() => this.delete(role.id)}
-                                                    >Delete</a>
-                                                </div>
+                                            <div className="btn-group mr-2">
+                                                <Link to={`/roles/${role.id}/edit`} className="btn btn-sm btn-outline-secondary">Edit</Link>
+                                                <Deleter id={role.id} endpoint={'roles'} handleDelete={this.handleDelete}/>
+                                            </div>
                                         </td>
                                     </tr>
                                 )

@@ -9,11 +9,20 @@ const Menu = () => (
                     <NavLink to={'/dashboard'} className="nav-link">
                         Dashboard
                     </NavLink>
+                </li>
+                <li className="nav-item">
                     <NavLink to={'/users'} className="nav-link">
                         Users
                     </NavLink>
+                </li>
+                <li className="nav-item">
                     <NavLink to={'/roles'} className="nav-link">
                         Roles
+                    </NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink to={'/products'} className="nav-link">
+                        Products
                     </NavLink>
                 </li>
             </ul>
