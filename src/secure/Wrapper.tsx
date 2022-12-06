@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Menu from './components/Menu';
 import Nav from './components/Nav';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Wrapper extends Component {
     state = {
@@ -10,6 +10,7 @@ export default class Wrapper extends Component {
     }
 
     componentDidMount = async () => {
+        console.log("inside ComponentDidMount in Wrapeer class");
         try {
             await axios.get('user');
         } catch(e) {
@@ -22,7 +23,7 @@ export default class Wrapper extends Component {
 
     render() {
         if(this.state.redirect) {
-            return <Redirect to={'/login'} />
+            return <Link to={'/login'} />
         }
         return (
             <>

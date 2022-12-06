@@ -2,7 +2,7 @@ import React, { Component, SyntheticEvent } from 'react';
 import Wrapper from '../Wrapper';
 import axios from 'axios';
 import { Role } from '../../classes/role';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class UserCreate extends Component {
     state = {
@@ -37,7 +37,7 @@ export default class UserCreate extends Component {
     }
   render() {
       if(this.state.redirect) {
-          return <Redirect to={'/users'} />;
+          return <Link to={'/users'} />;
       }
     return <Wrapper>
         <form onSubmit={this.submit}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Nav extends Component{
     state = {
@@ -14,7 +14,7 @@ class Nav extends Component{
     }
  render() {
      if(this.state.redirect) {
-         return <Redirect to={'/login'} />
+         return <Link to={'/login'} />
      }
     return (
         <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">

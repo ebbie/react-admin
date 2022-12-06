@@ -1,7 +1,7 @@
 import React, {Component, SyntheticEvent} from 'react';
 import Wrapper from '../Wrapper';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class RoleCreate extends Component {
@@ -42,7 +42,7 @@ class RoleCreate extends Component {
     }
     render() {
         if(this.state.redirect){
-            return <Redirect to={'/roles'} />
+            return <Link to={'/roles'} />
         }
         return (
             <Wrapper>

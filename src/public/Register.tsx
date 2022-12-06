@@ -1,7 +1,7 @@
 import React, { Component, SyntheticEvent } from 'react';
 import './Public.css';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Register extends Component {
     first_name = '';
@@ -31,7 +31,7 @@ export default class Register extends Component {
     }
   render() {
       if(this.state.redirect) {
-        return <Redirect to={'/login'} />
+        return <Link to={'/login'} />
       }
     return (
             <form className="form-signin" onSubmit={this.submit}>

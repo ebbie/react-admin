@@ -2,7 +2,7 @@ import React from 'react';
 import Dashboard from './secure/dashboard/Dashboard';
 import './App.css';
 import Users from './secure/users/users';
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from './public/Login';
 import Register from './public/Register';
 import RedirectToDashboard from './secure/RedirectToDashboard';
@@ -16,22 +16,25 @@ import ProductCreate from './secure/products/ProductCreate';
 import ProductEdit from './secure/products/ProductEdit';
 
 function App() {
+  console.log("insinde App");
   return (
     <div className="App">
       <BrowserRouter>
-        <Route path={'/'} component={RedirectToDashboard} />
-        <Route path={'/dashboard'} exact component={Dashboard} />
-        <Route path={'/login'} component={Login} />
-        <Route path={'/register'} component={Register} />
-        <Route path={'/users'} component={Users} exact />
-        <Route path={'/users/create'} component={UserCreate} />
-        <Route path={'/users/:id/edit'} component={UserEdit} />
-        <Route path={'/roles'} component={Roles} exact />
-        <Route path={'/roles/create'} component={RoleCreate} exact />
-        <Route path={'/roles/:id/edit'} component={RoleEdit}/>
-        <Route path={'/products'} component={Products} exact />
-        <Route path={'/products/create'} component={ProductCreate} exact />
-        <Route path={'/products/:id/edit'} component={ProductEdit}/>
+        <Routes>
+          <Route path="/" element={<RedirectToDashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path={'/login'} element={<Login />} />
+          <Route path={'/register'} element={<Register />} />
+          <Route path={'/users'} element={<Users />} />
+          <Route path={'/users/create'} element={<UserCreate />} />
+          {/* <Route path={'/users/:id/edit'} element={<UserEdit />} /> */}
+          <Route path={'/roles'} element={<Roles />}  />
+          <Route path={'/roles/create'} element={<RoleCreate />}  />
+          {/* <Route path={'/roles/:id/edit'} element={<RoleEdit />}/> */}
+          <Route path={'/products'} element={<Products />}  />
+          <Route path={'/products/create'} element={<ProductCreate />}  />
+          {/* <Route path={'/products/:id/edit'} element={<ProductEdit />}/> */}
+        </Routes>
       </BrowserRouter>
     </div>
 

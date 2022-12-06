@@ -3,7 +3,7 @@ import Wrapper from "../Wrapper";
 import {Role} from "../../classes/role";
 import axios from "axios";
 import {User} from "../../classes/user";
-import {Redirect} from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 class UserEdit extends Component<{ match: PropsWithRef<any> }> {
     state = {
@@ -57,7 +57,7 @@ class UserEdit extends Component<{ match: PropsWithRef<any> }> {
 
     render() {
         if (this.state.redirect) {
-            return <Redirect to={'/users'}/>;
+            return <Link to={'/users'}/>;
         }
 
         return (

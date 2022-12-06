@@ -1,7 +1,7 @@
 import React, {Component, SyntheticEvent} from 'react';
 import Wrapper from '../Wrapper';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Permission } from '../../classes/permissions';
 import { Role } from '../../classes/role';
 
@@ -66,7 +66,7 @@ class RoleEdit extends Component<{match: any}> {
     }
     render() {
         if(this.state.redirect){
-            return <Redirect to={'/roles'} />
+            return <Link to={'/roles'} />
         }
         return (
             <Wrapper>

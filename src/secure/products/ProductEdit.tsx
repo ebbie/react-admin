@@ -1,7 +1,7 @@
 import React, { Component, SyntheticEvent } from 'react';
 import Wrapper from '../Wrapper';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ImageUpload from '../components/ImageUpload';
 import { Product } from '../../classes/product';
 
@@ -66,7 +66,7 @@ class ProductEdit extends Component<{match: any}> {
     }
     render() {
         if(this.state.redirect) {
-            return <Redirect to={'/products'} />
+            return <Link to={'/products'} />
         }
 
         return (
