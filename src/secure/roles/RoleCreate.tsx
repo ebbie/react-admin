@@ -2,20 +2,22 @@ import React, {Component, SyntheticEvent} from 'react';
 import Wrapper from '../Wrapper';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { Permission } from '../../classes/permissions';
 
 
 class RoleCreate extends Component {
         state = {
             permissions: [],
-            redirect: false
+            redirect: false,
+            loadPermissions: false,
         }
         selected: number[] = [];
         name = '';
     componentDidMount = async () => {
         const response = await axios.get('permissions');
-        console.log("permissions:",response);
         this.setState({
-            permissions: response.data.data
+            permissions: response.data.data,
+            loadPermissions: true
         });
     }
 
@@ -60,18 +62,17 @@ class RoleCreate extends Component {
                         <label className="col-sm-2 col-form-label">Permissions</label>
                         <div className="col-sm-10">
                             {this.state.permissions.map(
-                                (p: Permissions) => {
+                                (p: Permission) => {
                                     return (
                                         <div className="form-check form-check-inline col-3" key={p.id}>
                                             <input className="form-check-input" type="checkbox" value={p.name} 
                                              onChange={e => this.check(p.id) }
                                             />
-                                            <label className="form-check-label">{p.name}</label>
+                                            <label className="form-check-label">{p.name} {p.id}</label>
                                         </div>
                                     )
                                 }
                             )}
-                           
                         </div>
                     </div>
 

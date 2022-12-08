@@ -18,7 +18,6 @@ class Login extends Component {
             password: this.password
         });
 
-        console.log(response);
         localStorage.setItem('token',response.data.token);
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
         
